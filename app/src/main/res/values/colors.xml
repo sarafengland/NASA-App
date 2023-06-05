@@ -2,6 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#0000FF</color>
+    <color name="app_blue">#4DA6FF</color>
+    <color name="app_blue_dark">#4596e6</color>
+    <color name="app_orange">#E55639</color>
+    <color name="app_orange_dark">#cf4529</color>
+    <color name="app_yellow">#ffde33</color>
+    <color name="app_yellow_dark">#ffbc33</color>
+    <color name="app_lavender">#e6eeff</color>
+    <color name="app_lavender_dark">#dae2f2</color>
+    <color name="headline_blue">#0041a2</color>
+
     <color name="gray">#808080</color>
 </resources>

@@ -2,8 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.NasaApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/app_blue</item>
     </style>
 
     <style name="Theme.NasaApp" parent="Base.Theme.NasaApp" />
+
+    <style name="Headline" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/headline_blue</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
