@@ -22,7 +22,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
         mViewModel = MainFragmentViewModel(Repository())
-        binding.viewModel = mViewModel
+        binding.cardView.viewModel = mViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
