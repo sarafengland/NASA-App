@@ -1,4 +1,4 @@
-package com.example.nasaapp.models
+package com.example.nasaapp.models.nasamodels
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

@@ -1,5 +1,8 @@
 package com.example.nasaapp.ui.mainFragment
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,14 +24,31 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
-        mViewModel = MainFragmentViewModel(Repository())
+        mViewModel = MainFragmentViewModel(
+            Repository(),
+            resources
+        )
+        binding.viewModel = mViewModel
         binding.cardView.viewModel = mViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        mViewModel.hasInternet = context?.let { isInternetAvailable(it) } == true
         mViewModel.searchItems()
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkCapabilities = connectivityManager.activeNetwork ?: return false
+        val activeNetwork =
+            connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+
+        return activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
     }
 }

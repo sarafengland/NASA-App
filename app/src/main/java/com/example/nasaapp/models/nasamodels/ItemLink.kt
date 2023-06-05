@@ -1,4 +1,4 @@
-package com.example.nasaapp.models
+package com.example.nasaapp.models.nasamodels
 
 import java.io.Serializable
 
