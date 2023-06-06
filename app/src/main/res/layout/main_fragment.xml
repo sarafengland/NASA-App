@@ -17,10 +17,19 @@
         android:layout_height="match_parent"
         tools:context=".ui.mainFragment.MainFragment">
 
-        <include
-            android:id="@+id/card_view"
-            layout="@layout/card_view"
-            android:visibility="@{viewModel.errorMessage == null ? View.VISIBLE : View.GONE}" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cards_grid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{viewModel.errorMessage == null ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="1"
+            tools:itemCount="10"
+            tools:listitem="@layout/card_view" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/error_card"
@@ -34,7 +43,7 @@
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_view"
+            app:layout_constraintTop_toBottomOf="@+id/cards_grid"
             tools:visibility="gone">
 
             <TextView

@@ -29,12 +29,16 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             resources
         )
         binding.viewModel = mViewModel
-        binding.cardView.viewModel = mViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val adapter = CardViewAdapter()
+        binding.cardsGrid.adapter = adapter
+        mViewModel.items.observe(viewLifecycleOwner) { items ->
+            adapter.setItems(items)
+        }
         mViewModel.hasInternet = context?.let { isInternetAvailable(it) } == true
         mViewModel.searchItems()
         super.onViewCreated(view, savedInstanceState)
