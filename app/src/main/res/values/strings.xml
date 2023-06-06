@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NASA App</string>
     <string name="no_data_message">We seem to be having trouble getting the data requested. Please check your internet connection and try again</string>
+    <string name="image_content_description">Image associated to card view</string>
 </resources>
