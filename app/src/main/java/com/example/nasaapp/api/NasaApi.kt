@@ -11,7 +11,9 @@ interface NasaApi {
     suspend fun searchForItems(
         @Query("q")
         searchQuery: String,
+        @Query("description")
+        description: String? = null,
         @Query("media_type")
-        mediaType: String
+        mediaType: String? = null
     ): Response<NasaCollection>
 }

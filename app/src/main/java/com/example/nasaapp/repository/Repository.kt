@@ -6,11 +6,19 @@ import java.io.IOException
 
 class Repository {
 
-    suspend fun getCollection(searchQuery: String, mediaType: String): NetworkResponse {
+    suspend fun getCollection(
+        searchQuery: String,
+        description: String?,
+        mediaType: String?
+    ): NetworkResponse {
         return try {
             NetworkResponse(
                 errorMessage = null,
-                responseCollection = RetrofitInstance.api.searchForItems(searchQuery, mediaType)
+                responseCollection = RetrofitInstance.api.searchForItems(
+                    searchQuery = searchQuery,
+                    description = description,
+                    mediaType = mediaType
+                )
                     .body()
             )
         } catch (e: IOException) {

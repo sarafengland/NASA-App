@@ -16,6 +16,7 @@ class MainFragmentViewModel(
 
     companion object {
         const val SEARCH_PARAM = "Apollo 11"
+        const val SEARCH_DESCRIPTION = "Moon landing"
         const val SEARCH_MEDIA_TYPE = "image"
         const val NUM_OF_ITEMS = 10
     }
@@ -35,7 +36,11 @@ class MainFragmentViewModel(
     private fun requestData() {
         errorMessage.value = null // clear error message
         viewModelScope.launch {
-            val response = repository.getCollection(SEARCH_PARAM, SEARCH_MEDIA_TYPE)
+            val response = repository.getCollection(
+                searchQuery = SEARCH_PARAM,
+                description = SEARCH_DESCRIPTION,
+                mediaType = SEARCH_MEDIA_TYPE
+            )
             response.responseCollection?.let {
                 val responseItems = it.nasaCollection?.items
                 responseItems?.let { itemsList ->
